@@ -22,18 +22,39 @@ $(document).ready(function(){
   // });
 
   $("#filters :checkbox").click(function() {
-     $("li").hide();
-     $("#filters :checkbox:checked").each(function() {
+    $("li").hide();
+    $("li").each(function(){
+      var $this_lesson = $(this);
+      console.log($this_lesson.data("location"));
 
-        $(this) 
+      $("#filters :checkbox:checked").each(function() {
+          var this_checkbox_classname = $(this)[0]["className"];
+          var this_checkbox_id = $(this)[0]["id"];
+       
+          // $("li[data-"+this_checkbox_classname+"='"+this_checkbox_id+"']").show();
 
-         // $("." + $(this).val()).show();
-         console.log($(this)[0]["id"]);
-         var this_checkbox_id = $(this)[0]["id"];
-         
-         $("li[data-location='"+this_checkbox_id+"']").show();
-     });
+      });
+    });
   });
 
 
 });
+
+
+// if (this_checkbox_classname == "location") {
+//    $("li[data-location='"+this_checkbox_id+"']").show();
+// }
+
+
+
+
+
+/// this works
+
+// $("#filters :checkbox:checked").each(function() {
+//     var this_checkbox_classname = $(this)[0]["className"];
+//     var this_checkbox_id = $(this)[0]["id"];
+ 
+//     $("li[data-"+this_checkbox_classname+"='"+this_checkbox_id+"']").show();
+
+// });

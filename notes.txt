@@ -1,0 +1,8 @@
+<lesson data-filters=[1, 4, 6]> 
+
+lesson.data("filters", [1, 2, 3])
+var lessonFilters = lesson.data("filters")
+
+if lessonFilters intersect allFilters
+  show()
+end
