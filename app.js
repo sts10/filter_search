@@ -16,37 +16,36 @@ $(document).ready(function(){
     $('li').show();
   });
 
-  $("#filters :checkbox").click(function() {
 
-   $("li").hide();
-   var filters = getFilters();
-   $(".lesson").each(function(){
-    var $lesson = $(this);
-    var lessonFilters = $lesson.data("filters");
-    console.log($lesson.attr("id"));
-    console.log(lessonFilters);
-    if(lessonQualified(filters, lessonFilters)){
-      $lesson.show();
-    }
-  });
- });
+    $("#filters :checkbox").click(function () {
+        $("li").hide();
+        var activeFilters = getActiveFilters();
+        $(".lesson").each(function () {
+            var $lesson = $(this);
+            var lessonFilters = $lesson.data("filters");
+            if (lessonQualified(activeFilters, lessonFilters)) {
+                $lesson.show();
+            }
+        });
 
-  function getFilters(){
-    var filterArray = [];
-    $("#filters :checkbox:checked").each(function() {
-      filterArray.push(parseInt($(this).attr("id")));
     });
-    return filterArray;
-  };
 
-  function lessonQualified(filter, lesson){
-    for(var i = 0; i < filter.length ; i++){
-      if((lesson.indexOf(filter[i])) == -1){
-        return false;
-      }
+    function getActiveFilters() {
+        var filterArray = [];
+        $("#filters :checkbox:checked").each(function () {
+            filterArray.push(parseInt($(this).attr("id")));
+        });
+        return filterArray;
     }
-    return true;
-  };
+
+    function lessonQualified(filter, lesson) {
+        for (var i = 0; i < filter.length; i++) {
+            if ((lesson.indexOf(filter[i])) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
 
   console.log(lessonQualified([1, 2], [2, 3]));
   console.log(lessonQualified([2], [2, 3]));
