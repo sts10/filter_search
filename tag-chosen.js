@@ -14,8 +14,4 @@ $(document).ready(function(){
     console.log(tags_selected);
   });
 
-  $('#simple-select').on('change', function() {
-     alert("change");
-   });
-
 });
